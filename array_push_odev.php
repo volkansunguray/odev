@@ -8,6 +8,7 @@
 </head>
 <body>
 <?php
+
     echo "Dizimiz 4 Elamanlı 'Ali,Veli,Ayşe ve Fatma' isimlerini içeriyor <br>";
     $dizi = array("Ali","Veli","Ayse","Fatma");
     print_r($dizi);
@@ -26,8 +27,6 @@
     echo "<br><br>";
     echo "Dizimizin son hali başta yaptığımız gibi 4 elamanlı fakat içerisindeki isimler değişti dizinin sonuna <br> 
     2 adet isim ekleyip 1 tane çıkarttım dizinin başından ise 1 adet isim çıkarttık.";
-
-    // Git denemesi...
 
     ?>
 </body>
