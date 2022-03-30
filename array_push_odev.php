@@ -27,6 +27,8 @@
     echo "Dizimizin son hali başta yaptığımız gibi 4 elamanlı fakat içerisindeki isimler değişti dizinin sonuna <br> 
     2 adet isim ekleyip 1 tane çıkarttım dizinin başından ise 1 adet isim çıkarttık.";
 
+    // Git denemesi...
+
     ?>
 </body>
 </html>
