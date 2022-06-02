@@ -31,7 +31,7 @@ include("header.php");
 									5- Ders (Yazılım Mimarileri, Web Programlama, Sunucu İşletim Sistemleri)
 									6- Notunuz
 									 -->
-									<form action="" method="POST" name="contactForm" class="contactForm">
+									<form action="index.php" method="POST" name="contactForm" class="contactForm">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
@@ -82,48 +82,16 @@ include("header.php");
 											</div>
 										</div>
 									</form>
-
-									<table class="table table-hover table-dark">
-										<thead>
-											<tr>
-												<th scope="col">#</th>
-												<th scope="col">First</th>
-												<th scope="col">Last</th>
-												<th scope="col">Handle</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>Jacob</td>
-												<td>Thornton</td>
-												<td>@fat</td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td colspan="2">Larry the Bird</td>
-												<td>@twitter</td>
-											</tr>
-										</tbody>
-									</table>
-
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+				<table class="table table-hover table-dark">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Ad Soyad</th>
+						<th scope="col">E-Mail</th>
+					</tr>
+				</thead>
+				<tbody>
+									
 	<?php
 
 
@@ -135,6 +103,24 @@ include("header.php");
   		if(!$dbCon){
 	  		die('Could not Connect MySql Server:' .mysql_error());
   		}
+
+		$sorgu = $dbCon->query("SELECT id, nameSurname, email FROM forms");
+
+		while ($cikti = $sorgu->fetch_array()){
+			$id = $cikti['id'];
+            $nameSurname = $cikti['nameSurname'];
+			$email = $cikti['email'];
+
+			echo "
+				<tr>
+					<th>$id</th>
+					<td>$nameSurname</td>
+					<td>$email</td>
+				</tr>
+			</tbody>
+			";
+		}
+
 		if(count($_POST)>0)
 		{    
 			$nameSurname = $_POST['nameSurname'];
@@ -148,16 +134,25 @@ include("header.php");
 			VALUES ('$nameSurname','$email','$gsm','$gender','$courses','$description')";
 			mysqli_query($dbCon, $query);
 			$lastId = mysqli_insert_id($dbCon);
+
 		   
 			if (!empty($lastId)) {
 				$message = "Your contact information is saved successfully";
 			}
 		}
 
-
-
-
-
-
-	include("footer.php");
+		include("footer.php");
 	?>
+										</tbody>
+									</table>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
